@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Recommender System</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <style>
+        .text-white {
+            color: white;
+        }
+        .navbar-custom {
+            background: linear-gradient(45deg, #00a65a, #007d32);
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        .navbar-brand {
+            color: white !important;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .nav > li > a {
+            color: white !important;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .nav > li > a:hover, .nav > li > a:focus {
+            background-color: #007d32;
+            color: white !important;
+            border-radius: 4px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .navbar-nav > .active > a, .navbar-nav > .active > a:hover, .navbar-nav > .active > a:focus {
+            background-color: #007d32;
+            color: white !important;
+        }
+        body {
+            background-color: black;
+            font-family: 'Arial', sans-serif;
+        }
+        h1 {
+            margin-top: 20px;
+        }
+        .card {
+            background-color: #1c1c1c;
+            border: 1px solid #333;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+        }
+        .card-body img {
+            border-radius: 10px;
+            width: 100%;
+            height: auto;
+        }
+        .card-body p, .card-body h4 {
+            margin: 10px 0;
+        }
+        .card-body p {
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .card-body h4 {
+            font-size: 16px;
+            font-weight: normal;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-custom">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">📚 My Book Recommender</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">🏠 Home</a></li>
+                <li><a href="/recommend">📖 Recommend</a></li>
+                <li><a href="/contact">✉️ Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="text-white" style="font-size:50px">📚 Top 50 Books</h1>
+            </div>
+
+            {% for i in range(book_name|length) %}
+                <div class="col-md-3" style="margin-top:50px">
+                    <div class="card">
+                        <div class="card-body">
+                            <img class="card-img-top" src="{{ image[i] }}" alt="Book image">
+                            <p class="text-white">📖 {{ book_name[i] }}</p>
+                            <h4 class="text-white">✍️ {{ author[i] }}</h4>
+                            <h4 class="text-white">👍 Votes - {{ votes[i] }}</h4>
+                            <h4 class="text-white">⭐ Rating - {{ rating[i] }}</h4>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+
+</body>
+</html>
